@@ -6,5 +6,7 @@ build:
     - "libgl1"
     - "libsndfile1"
     - "libavcodec-extra"
-    
+
 predict: "predict.py:Predictor"
+
+gpu: true
