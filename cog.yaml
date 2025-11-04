@@ -3,3 +3,24 @@ build:
   python_requirements: "requirements_replicate.txt"
 
 predict: "predict.py:Predictor"
+
+# ↓ Ekledik: modelin input'larını file olarak tanımlıyoruz
+inputs:
+  image:
+    type: file
+    description: "Input image (jpg/png)"
+  audio:
+    type: file
+    description: "Input audio file (mp3/wav)"
+  resolution:
+    type: string
+    default: "infinitetalk-480"
+    enum: ["infinitetalk-480", "infinitetalk-720"]
+  mode:
+    type: string
+    default: "streaming"
+    enum: ["streaming", "clip"]
+  device:
+    type: string
+    default: "cpu"
+    enum: ["cpu", "cuda"]
