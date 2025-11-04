@@ -8,5 +8,3 @@ build:
     - "libavcodec-extra"
 
 predict: "predict.py:Predictor"
-
-gpu: true
