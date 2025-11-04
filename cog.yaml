@@ -1,14 +1,5 @@
 build:
   python_version: "3.10"
-  python_packages:
-    - torch
-    - torchvision
-    - torchaudio
-    - huggingface_hub
-    - ffmpeg-python
-    - numpy
-    - pillow
-    - cog
   python_requirements: "requirements_replicate.txt"
 
 predict: "predict.py:Predictor"
