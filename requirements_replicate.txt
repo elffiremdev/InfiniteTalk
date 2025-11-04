@@ -18,3 +18,4 @@ pyloudnorm
 scenedetect
 ffmpeg-python
 huggingface_hub>=0.24.0
+einops
