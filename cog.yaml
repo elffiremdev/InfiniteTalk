@@ -1,14 +1,13 @@
 build:
   python_version: "3.10"
   python_packages:
-    - torch==2.4.1
-    - torchvision==0.19.1
-    - torchaudio==2.4.1
+    - torch
+    - torchvision
+    - torchaudio
     - huggingface_hub
+    - ffmpeg-python
     - numpy
     - pillow
-    - tqdm
-    - ffmpeg-python
+    - cog
+
 predict: "predict.py:Predictor"
-# GPU opsiyonel
-# gpu: true
