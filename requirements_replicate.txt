@@ -1,22 +1,27 @@
-torch
-torchvision
-torchaudio
+# PyTorch ve GPU desteği
+torch==2.3.1
+torchvision==0.18.1
+torchaudio==2.3.1
+
+# Görüntü ve video işleme
 opencv-python-headless>=4.8.0
+imageio
+imageio-ffmpeg
+scikit-image
+ffmpeg-python
+pyloudnorm
+scenedetect
+
+# Model ve difüzyon altyapısı
 diffusers==0.29.1
 transformers>=4.38.0
 tokenizers>=0.19.1
 accelerate
-tqdm
-imageio
-easydict
-ftfy
-imageio-ffmpeg
-scikit-image
-loguru
-numpy>=1.23.5,<2
-pyloudnorm
-scenedetect
-ffmpeg-python
 huggingface_hub>=0.24.0
 einops
 xfuser
+easydict
+ftfy
+tqdm
+loguru
+numpy>=1.23.5,<2
