@@ -9,5 +9,6 @@ build:
     - numpy
     - pillow
     - cog
+  python_requirements: "requirements_replicate.txt"
 
 predict: "predict.py:Predictor"
