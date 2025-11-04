@@ -22,7 +22,7 @@ class Predictor(BasePredictor):
         audio: Path = Input(description="Input audio file (mp3/wav)"),
         resolution: str = Input(default="infinitetalk-480", choices=["infinitetalk-480", "infinitetalk-720"]),
         mode: str = Input(default="streaming", choices=["streaming", "clip"]),
-        device: str = Input(default="cpu", choices=["cpu", "cuda"]),
+        device: str = Input(default="cuda", choices=["cpu", "cuda"]),  # ✅ GPU default
     ) -> Path:
         """Run inference: generate 20s talking video from image + audio"""
         input_json = "input.json"
@@ -50,11 +50,14 @@ class Predictor(BasePredictor):
             "--save_file", output_path,
         ]
 
+        # ✅ Force CPU mode only when explicitly selected
         if device == "cpu":
             os.environ["CUDA_VISIBLE_DEVICES"] = ""
             cmd += ["--device", "cpu"]
+        else:
+            cmd += ["--device", "cuda"]
 
-        print("🚀 Running InfiniteTalk generation...")
+        print(f"🚀 Running InfiniteTalk generation on {device.upper()} ...")
         subprocess.run(cmd, check=True)
 
         print(f"✅ Done! Output saved at: {output_path}")
