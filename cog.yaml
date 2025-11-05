@@ -8,7 +8,7 @@ build:
     - libavcodec-extra
   run:
     # (Opsiyonel) Daha hızlı HF indirmeleri:
-    - pip install hf-transfer==0.1.9.dev1
+    - pip install hf-transfer
     - export HF_HUB_ENABLE_HF_TRANSFER=1
 
     # CUDA 12.x uyumlu PyTorch (T4/L40S/H100 için güvenli seçim)
