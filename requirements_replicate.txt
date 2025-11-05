@@ -30,3 +30,10 @@ xfuser>=0.4.0
 
 # NumPy - 1.23.5 üstü ama 2.0'dan küçük olmalı
 numpy>=1.23.5,<2.0
+
+# Replicate / Cog ve sistem entegrasyonu
+cog==0.11.3
+
+# JSON ve subprocess işlemleri (standart ama garanti olsun)
+requests
+
