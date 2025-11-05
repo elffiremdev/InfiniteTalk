@@ -16,12 +16,17 @@ scenedetect
 diffusers==0.29.1
 transformers>=4.38.0
 tokenizers>=0.19.1
-accelerate
+accelerate>=0.30.0
 huggingface_hub>=0.24.0
 einops
-xfuser
 easydict
 ftfy
 tqdm
 loguru
-numpy>=1.23.5,<2
+
+# xfuser GPU dependency - opsiyonel olarak import edilmeli
+# Not: CPU'da hata vermemesi için opsiyonel yükleme önerilir
+xfuser==0.1.7
+
+# NumPy - 1.23.5 üstü ama 2.0'dan küçük olmalı
+numpy>=1.23.5,<2.0
