@@ -2,8 +2,22 @@ build:
   python_version: "3.10"
   python_requirements: "requirements_replicate.txt"
   system_packages:
-    - "ffmpeg"
-    - "libgl1"
-    - "libsndfile1"
-    - "libavcodec-extra"
+    - ffmpeg
+    - libgl1
+    - libsndfile1
+    - libavcodec-extra
+  run:
+    # (Opsiyonel) Daha hızlı HF indirmeleri:
+    - pip install hf-transfer==0.1.9.dev1
+    - export HF_HUB_ENABLE_HF_TRANSFER=1
+
+    # CUDA 12.x uyumlu PyTorch (T4/L40S/H100 için güvenli seçim)
+    - pip install --index-url https://download.pytorch.org/whl/cu121 torch torchvision torchaudio
+
+    # Hugging Face'den AĞIRLIKLARI build aşamasında indir (image'a dahil olsun)
+    - mkdir -p weights
+    - huggingface-cli download MeiGen-AI/InfiniteTalk --local-dir weights/InfiniteTalk --ignore-patterns ".git*"
+    - huggingface-cli download Wan-AI/Wan2.1-I2V-14B-480P --local-dir weights/Wan2.1-I2V-14B-480P --ignore-patterns ".git*"
+    - huggingface-cli download TencentGameMate/chinese-wav2vec2-base --local-dir weights/chinese-wav2vec2-base --ignore-patterns ".git*"
+
 predict: "predict.py:Predictor"
