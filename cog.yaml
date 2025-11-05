@@ -7,9 +7,10 @@ build:
     - libsndfile1
     - libavcodec-extra
   run:
-    - pip install huggingface_hub hf-transfer
+    - pip install huggingface_hub
+    - pip install hf-transfer
     - export HF_HUB_ENABLE_HF_TRANSFER=1
-    - pip install --index-url https://download.pytorch.org/whl/cu121 torch torchvision torchaudio xformers
+    - pip install --index-url https://download.pytorch.org/whl/cu121 torch torchvision torchaudio
     - mkdir -p weights
     - huggingface-cli download MeiGen-AI/InfiniteTalk --local-dir weights/InfiniteTalk --ignore-patterns ".git*"
     - huggingface-cli download Wan-AI/Wan2.1-I2V-14B-480P --local-dir weights/Wan2.1-I2V-14B-480P --ignore-patterns ".git*"
