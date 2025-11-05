@@ -7,5 +7,3 @@ build:
     - "libsndfile1"
     - "libavcodec-extra"
 predict: "predict.py:Predictor"
-
-gpu: true
