@@ -7,14 +7,17 @@ from huggingface_hub import snapshot_download
 
 class Predictor(BasePredictor):
     def setup(self):
-        """Setup: download and cache model weights"""
-        os.makedirs("weights", exist_ok=True)
-        print("🔽 Checking or downloading required model weights...")
+    """Setup: check pre-downloaded model weights (already built into image)"""
+    self.model_dir = "weights/InfiniteTalk"
+    self.video_model_dir = "weights/Wan2.1-I2V-14B-480P"
+    self.audio_model_dir = "weights/chinese-wav2vec2-base"
 
-        # Cache (only downloads once, stored in ~/.cache/huggingface)
-        snapshot_download("MeiGen-AI/InfiniteTalk", local_dir="weights/InfiniteTalk", ignore_patterns=[".git*"])
-        snapshot_download("Wan-AI/Wan2.1-I2V-14B-480P", local_dir="weights/Wan2.1-I2V-14B-480P", ignore_patterns=[".git*"])
-        snapshot_download("TencentGameMate/chinese-wav2vec2-base", local_dir="weights/chinese-wav2vec2-base", ignore_patterns=[".git*"])
+    for path in [self.model_dir, self.video_model_dir, self.audio_model_dir]:
+        if not os.path.exists(path):
+            raise RuntimeError(f"Model klasörü eksik: {path}")
+
+    print("✅ Model klasörleri bulundu, hazır!")
+
 
     def predict(
         self,
